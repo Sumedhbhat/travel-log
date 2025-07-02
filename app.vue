@@ -1,6 +1,7 @@
 <template>
   <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+    <button class="btn btn-primary">
+      Secondary
+    </button>
   </div>
 </template>

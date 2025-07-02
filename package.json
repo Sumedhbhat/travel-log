@@ -14,13 +14,17 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@nuxt/icon": "1.15.0",
+    "@tailwindcss/vite": "^4.1.11",
     "nuxt": "^3.17.5",
+    "tailwindcss": "^4.1.11",
     "vue": "^3.5.16",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.15.0",
     "@nuxt/eslint": "^1.4.1",
+    "daisyui": "^5.0.43",
     "eslint": "^9.29.0",
     "eslint-plugin-format": "^1.0.1",
     "husky": "^9.1.7",
