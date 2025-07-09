@@ -14,7 +14,7 @@ export default withNuxt(
         semi: true,
         quotes: "double",
       },
-      ignores: [".pnpm-store"],
+      ignores: [".pnpm-store", "lib/db/migrations"],
     },
     {
       rules: {
