@@ -14,16 +14,16 @@ export default withNuxt(
         semi: true,
         quotes: "double",
       },
-      ignores: [".pnpm-store"],
+      ignores: [".pnpm-store", "lib/db/migrations"],
     },
     {
       rules: {
         "ts/no-unsafe-declaration-merging": "off",
         "ts/consistent-type-definitions": ["error", "type"],
-        "no-console": ["warn"],
         "antfu/no-top-level-await": ["off"],
         "node/prefer-global/process": ["off"],
         "node/no-process-env": ["error"],
+        "no-console": ["error"],
         "perfectionist/sort-imports": [
           "error",
           {
