@@ -1,5 +1,7 @@
 import { integer, real, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
+import { user } from "./auth.ts";
+
 export const location = sqliteTable("location", {
   id: integer().primaryKey({ autoIncrement: true }),
   name: text().notNull(),
@@ -7,6 +9,12 @@ export const location = sqliteTable("location", {
   description: text(),
   lat: real(),
   long: real(),
-  createdAt: integer({ mode: "timestamp" }).notNull().$default(() => new Date()),
-  updatedAt: integer({ mode: "timestamp" }).notNull().$default(() => new Date()).$onUpdate(() => new Date()),
+  userId: integer().references(() => user.id),
+  createdAt: integer({ mode: "timestamp" })
+    .notNull()
+    .$default(() => new Date()),
+  updatedAt: integer({ mode: "timestamp" })
+    .notNull()
+    .$default(() => new Date())
+    .$onUpdate(() => new Date()),
 });
