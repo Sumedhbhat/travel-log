@@ -21,7 +21,10 @@ export default function tryParseEnv<T extends ZodRawShape>(
       throw e;
     }
     else {
-      console.error("Unexpected error while parsing environment variables:", error);
+      console.error(
+        "Unexpected error while parsing environment variables:",
+        error,
+      );
     }
   }
 }

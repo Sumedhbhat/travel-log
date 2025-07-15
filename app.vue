@@ -9,10 +9,7 @@
           <p class="py-6">
             Keep Track of your travels with Travel Log. Document your adventures, mark destinations on maps, upload photos from memorable moments, and create beautiful journals of your journeys. Whether you're a globetrotter or weekend explorer, Travel Log helps you preserve those special memories. Sign in to get started.
           </p>
-          <button class="btn btn-accent">
-            Sign In
-            <Icon name="tabler:brand-github" size="24" />
-          </button>
+          <AuthButton />
         </div>
       </div>
     </div>
