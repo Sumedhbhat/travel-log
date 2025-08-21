@@ -1,23 +1,13 @@
 <script lang="ts" setup>
-import { createAuthClient } from "better-auth/client";
+import { useAuthStore } from "~/stores/auth";
 
-const authClient = createAuthClient();
-
-const loading = ref(false);
-
-async function signIn() {
-  loading.value = true;
-  await authClient.signIn.social({
-    provider: "github",
-  });
-  loading.value = false;
-}
+const authStore = useAuthStore();
 </script>
 
 <template>
-  <button :disabled="loading" class="btn btn-accent" @click="signIn">
+  <button :disabled="authStore.loading" class="btn btn-accent" @click="authStore.signIn">
     Sign In
-    <span v-if="loading" class="loading loading-spinner loading-md" />
+    <span v-if="authStore.loading" class="loading loading-spinner loading-md" />
     <Icon v-else name="tabler:brand-github" size="24" />
   </button>
 </template>
