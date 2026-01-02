@@ -1,0 +1,16 @@
+name: My Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      correlationId:
+        required: true
+        description: "Durable Function orchestration instance ID"
+
+run-name: ${{ github.event.inputs.correlationId }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Building workflow for correlation ${{ github.event.inputs.correlationId }}"
