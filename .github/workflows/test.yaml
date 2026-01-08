@@ -6,11 +6,18 @@ on:
         required: true
         description: "Durable Function orchestration instance ID"
 
-run-name: ${{ github.event.inputs.correlationId }}
+run-name: ${{ inputs.correlationId }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Building workflow for correlation ${{ github.event.inputs.correlationId }}"
+      
+      - name: Print Workflow details
+        run: echo "Building workflow for correlation ${{ github.event.inputs.correlationId }}"
+      
+      - name: Fail purposefully
+        run: |
+          echo "::error title=Manual Failure::This workflow was broken on purpose because X happened."
+          exit 1
