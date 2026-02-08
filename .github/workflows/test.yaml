@@ -27,7 +27,7 @@ jobs:
     steps:
       - name: Wait for deployment to be registered
         run: sleep 20
-        
+
       - name: Auto-approve deployment
         uses: activescott/automate-environment-deployment-approval@v1
         with:
