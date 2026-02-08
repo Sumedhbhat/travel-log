@@ -2,21 +2,21 @@ name: My Workflow
 on:
   workflow_dispatch:
     inputs:
-      correlationId:
+      workflowName:
         required: true
-        description: "Durable Function orchestration instance ID"
+        description: Workflow name
 
-run-name: ${{ inputs.correlationId }}
+run-name: ${{ inputs.workflowName }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Print Workflow details
-        run: echo "Building workflow for correlation ${{ github.event.inputs.correlationId }}"
-      
+        run: echo "Building workflow for ${{ inputs.workflowName }}"
+
       - name: Fail purposefully
         run: |
           echo "::error title=Manual Failure::This workflow was broken on purpose because X happened."
