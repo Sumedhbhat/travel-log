@@ -9,8 +9,36 @@ on:
 run-name: ${{ inputs.workflowName }}
 
 jobs:
+  authorize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check authorized GitHub App
+        run: |
+          if [ "${{ github.actor }}" != "Web Api Starter - Local[bot]" ]; then
+            echo "::error::Unauthorized actor: ${{ github.actor }}"
+            echo "::error::This workflow can only be triggered by the authorized GitHub App: Web Api Starter - Local"
+            exit 1
+          fi
+          echo "✓ Authorized actor: ${{ github.actor }}"
+
+  auto-approve:
+    runs-on: ubuntu-latest
+    needs: authorize
+    steps:
+      - name: Wait for deployment to be registered
+        run: sleep 20
+        
+      - name: Auto-approve deployment
+        uses: activescott/automate-environment-deployment-approval@v1
+        with:
+          environment-name: test
+          token: ${{ secrets.DEPLOYMENT_APPROVAL_TOKEN }}
+
   build:
     runs-on: ubuntu-latest
+    needs: auto-approve
+    environment:
+      name: test
     steps:
       - uses: actions/checkout@v4
 
