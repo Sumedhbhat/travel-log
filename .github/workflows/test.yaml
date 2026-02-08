@@ -29,14 +29,15 @@ jobs:
         run: sleep 20
 
       - name: Auto-approve deployment
-        uses: activescott/automate-environment-deployment-approval@v1
+        uses: activescott/automate-environment-deployment-approval@10179fc61443cb28b95e807814d9dfce60a9e230 # <- v1.1.0
         with:
-          environment-name: test
-          token: ${{ secrets.DEPLOYMENT_APPROVAL_TOKEN }}
+          github_token: ${{ secrets.DEPLOYMENT_APPROVAL_TOKEN }}
+          environment_allow_list: test
+          run_id_allow_list: ${{ github.run_id }}
 
   build:
     runs-on: ubuntu-latest
-    needs: auto-approve
+    needs: authorize
     environment:
       name: test
     steps:
