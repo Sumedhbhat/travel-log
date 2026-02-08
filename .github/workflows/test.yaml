@@ -14,9 +14,9 @@ jobs:
     steps:
       - name: Check authorized GitHub App
         run: |
-          if [ "${{ github.actor }}" != "Web Api Starter - Local[bot]" ]; then
+          if [ "${{ github.actor }}" != "web-api-starter-local[bot]" ]; then
             echo "::error::Unauthorized actor: ${{ github.actor }}"
-            echo "::error::This workflow can only be triggered by the authorized GitHub App: Web Api Starter - Local"
+            echo "::error::This workflow can only be triggered by the authorized GitHub App: web-api-starter-local"
             exit 1
           fi
           echo "✓ Authorized actor: ${{ github.actor }}"
