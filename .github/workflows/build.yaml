@@ -8,14 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment: Build
+    # Dependabot runs can't read the Build environment's secrets. This job only
+    # lints, so placeholders are enough to get past the env check in `nuxt prepare`.
     env:
       NODE_ENV: production
-      TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+      TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL || 'file:local.db' }}
       TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
-      BETTER_AUTH_URL: ${{ secrets.BETTER_AUTH_URL }}
-      BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
-      GH_CLIENT_ID: ${{ secrets.GH_CLIENT_ID }}
-      GH_CLIENT_SECRET: ${{ secrets.GH_CLIENT_SECRET }}
+      BETTER_AUTH_URL: ${{ secrets.BETTER_AUTH_URL || 'http://localhost:3000' }}
+      BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET || 'ci-placeholder' }}
+      GH_CLIENT_ID: ${{ secrets.GH_CLIENT_ID || 'ci-placeholder' }}
+      GH_CLIENT_SECRET: ${{ secrets.GH_CLIENT_SECRET || 'ci-placeholder' }}
 
     steps:
       - uses: actions/checkout@v4
