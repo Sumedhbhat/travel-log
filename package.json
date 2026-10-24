@@ -23,7 +23,7 @@
     "better-auth": "^1.2.12",
     "concurrently": "^9.2.0",
     "drizzle-orm": "^0.44.2",
-    "nuxt": "^3.17.5",
+    "nuxt": "^4.6.2",
     "pinia": "^3.0.3",
     "tailwindcss": "^4.1.11",
     "vue": "^3.5.16",
