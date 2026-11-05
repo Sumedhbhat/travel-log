@@ -5,6 +5,11 @@ import { db } from "./db/index.ts";
 import env from "./env.ts";
 
 export const auth = betterAuth({
+  advanced: {
+    database: {
+      generateId: "serial",
+    },
+  },
   database: drizzleAdapter(db, {
     provider: "sqlite",
   }),
