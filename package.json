@@ -12,7 +12,8 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test:auth": "node test/security/oauth-flow.mjs"
   },
   "dependencies": {
     "@libsql/client": "^0.15.9",
