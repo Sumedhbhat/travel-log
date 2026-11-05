@@ -102,7 +102,7 @@ try {
   process.stdout.write("GitHub redirect/callback, user/account/session writes, authenticated session read, and sign-out passed against committed migrations.\n");
 }
 finally {
-  if (child.exitCode === null) {
+  if (child.exitCode === null && child.signalCode === null) {
     const exited = new Promise(resolveExit => child.once("exit", resolveExit));
     child.kill("SIGTERM");
     const timer = setTimeout(() => child.kill("SIGKILL"), 2000);
